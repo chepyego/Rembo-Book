@@ -18,15 +18,15 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  ROLES = %w[admin user]
+  ROLES = %w[admin salon_admin customer].freeze
 
   def admin?
     role == "admin"
   end
-  def user?
-    role == "user"
+  def customer?
+    role == "customer"
   end
   def set_default_role
-    self.role ||= "user"
+    self.role ||= "customer"
   end
 end

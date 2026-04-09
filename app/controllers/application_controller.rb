@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     unless current_user
-      redirect_to signup_path_path, alert: "You must log in to access this page."
+      redirect_to signup_path, alert: "You must log in to access this page."
     end
   end
 
