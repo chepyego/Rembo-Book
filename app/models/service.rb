@@ -8,7 +8,9 @@ class Service < ApplicationRecord
   has_many :clients, through: :bookings
   has_many :manicurists, through: :bookings
 
-  validates :title, :price, presence: true
+
+  validates :title, presence: true
+  validates :price, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 999999.99 }
 
   scope :search, ->(query) {
     return all if query.blank?
