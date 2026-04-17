@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_09_151458) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
-
+ActiveRecord::Schema[8.0].define(version: 2026_04_14_140313) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -62,6 +59,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_09_151458) do
     t.string "name"
     t.string "email"
     t.string "phone_number"
+    t.bigint "tenant_id"
     t.index ["service_id"], name: "index_bookings_on_service_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -73,6 +71,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_09_151458) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tenant_id"
     t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
@@ -84,13 +83,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_09_151458) do
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tenant_id"
     t.index ["user_id"], name: "index_manicurists_on_user_id"
   end
 
-  create_table "playing_with_neon", id: :serial, force: :cascade do |t|
-    t.text "name", null: false
-    t.float "value", limit: 24
-  end
+# Could not dump table "playing_with_neon" because of following StandardError
+#   Unknown type 'serial' for column 'id'
+
 
   create_table "schedules", force: :cascade do |t|
     t.string "title"
@@ -99,6 +98,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_09_151458) do
     t.integer "manicurist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tenant_id"
     t.index ["manicurist_id"], name: "index_schedules_on_manicurist_id"
   end
 
@@ -108,6 +108,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_09_151458) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "tenant_id"
     t.index ["user_id"], name: "index_services_on_user_id"
   end
 
@@ -136,6 +137,19 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_09_151458) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tenants", force: :cascade do |t|
+    t.string "name"
+    t.string "subdomain"
+    t.string "email"
+    t.string "phone_number"
+    t.string "location"
+    t.string "plan"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subdomain"], name: "index_tenants_on_subdomain", unique: true
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password_digest", null: false
@@ -144,16 +158,23 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_09_151458) do
     t.string "role"
     t.string "first_name"
     t.string "last_name"
+    t.bigint "tenant_id"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "bookings", "services"
+  add_foreign_key "bookings", "tenants"
   add_foreign_key "bookings", "users"
+  add_foreign_key "clients", "tenants"
   add_foreign_key "clients", "users"
+  add_foreign_key "manicurists", "tenants"
   add_foreign_key "manicurists", "users"
   add_foreign_key "schedules", "manicurists"
+  add_foreign_key "schedules", "tenants"
+  add_foreign_key "services", "tenants"
   add_foreign_key "services", "users"
   add_foreign_key "sessions", "users"
+  add_foreign_key "users", "tenants"
 end

@@ -1,4 +1,5 @@
 class Schedule < ApplicationRecord
+  belongs_to :tenant
   belongs_to :manicurist, inverse_of: :schedules
   accepts_nested_attributes_for :manicurist
 

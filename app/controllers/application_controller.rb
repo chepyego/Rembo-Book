@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :set_current_user
+  before_action :set_current_user, :set_current_tenant
   helper_method :current_user
 
   include Authentication # Keep this if it contains non-auth related helpers/logic
@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def set_current_tenant
+    return if request.subdomain.blank?
+    Current.tenant = Tenant.find_by(subdomain: request.subdomain)
+
+    unless Current.tenant
+      redirect_to root_path, alert: "salon not found"
+    end
+  end
 
   def authenticate_user!
     unless current_user

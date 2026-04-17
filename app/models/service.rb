@@ -1,6 +1,7 @@
 class Service < ApplicationRecord
   has_one_attached :image
   has_rich_text :description
+  belongs_to :tenant
 
   has_many :bookings, inverse_of: :service, dependent: :destroy
 

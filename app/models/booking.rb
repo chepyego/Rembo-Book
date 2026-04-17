@@ -1,6 +1,8 @@
 class Booking < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :service
+  belongs_to :tenant
+
 
   validates :name, :phone_number, :email, presence: true, if: :guest_booking?
 
