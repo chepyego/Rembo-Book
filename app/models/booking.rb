@@ -11,4 +11,6 @@ class Booking < ApplicationRecord
   end
 
     scope :upcoming, -> { where("date > ?", Time.zone.now) }
+
+    scope :for_user, ->(user) { where(user: user) }
 end

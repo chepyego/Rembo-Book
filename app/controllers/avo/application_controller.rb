@@ -11,7 +11,7 @@ module Avo
     private
 
     def authorize_admin
-      redirect_to main_app.root_path unless Current.user&.admin?
+      redirect_to main_app.root_path unless Current.user&.staff?
     end
 
 

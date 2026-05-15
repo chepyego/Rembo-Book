@@ -1,22 +1,24 @@
 class ServicesController < ApplicationController
-  before_action :set_service, only: %i[ show ]
+  before_action :set_service, only: %i[ show edit destroy update ]
+  before_action :authenticate_user!, only: %i[create edit destroy update]
+  before_action :authorize_staff!, only: %i[new create destroy update]
   allow_unauthenticated_access only: %i[ index show ]
 
    def search
     # SELECT * FROM robots WHERE name LIKE "%Robot%
     # SELECT * FROM service WHERE title LIKE "%cure"
 
-    @results = Service.search(params[:q])
+    @results = Current.tenant.services.search(params[:q])
    end
   # GET /services or /services.json
   def index
-    @services = Service.all
+    @services = Current.tenant.services.all
     # @services = Service.paginate(page: params[:page], per_page: 6).order("sort ASC")
   end
 
   # GET /services/1 or /services/1.json
   def show
-    @service = Service.find(params[:id])
+    @service
     # @service = Services.paginate(page: params[:page], per_page: 4).order("sort ASC")
   end
 
@@ -31,7 +33,7 @@ class ServicesController < ApplicationController
 
   # POST /services or /services.json
   def create
-    @service = Service.new(service_params)
+    @service = Current.tenant.services.new(service_params)
 
     respond_to do |format|
       if @service.save
@@ -59,11 +61,8 @@ class ServicesController < ApplicationController
 
   # DELETE /services/1 or /services/1.json
   def destroy
-    @service = Service.find(params[:id])
-    if @service.present?
        @service.destroy
-      redirect_to service_path, status: :see_other, notice: "Service was successfully destroyed"
-    end
+      redirect_to services_path, status: :see_other, notice: "Service was successfully destroyed"
 
     # respond_to do |format|
     #   format.html { redirect_to services_path, status: :see_other, notice: "Service was successfully destroyed." }
@@ -75,7 +74,7 @@ class ServicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_service
       # @service = Service.find(params.expect(:id))
-      @service = Service.find(params[:id])
+      @service = Current.tenant.services.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_validation :set_default_role
   has_secure_password
   belongs_to :tenant
 
@@ -25,9 +26,21 @@ class User < ApplicationRecord
   def admin?
     role == "admin"
   end
+
+  def salon_admin?
+    role == "salon_admin"
+  end
+
   def customer?
     role == "customer"
   end
+
+  def staff?
+     role.in?(%w[admin salon_admin])
+  end
+
+  private
+
   def set_default_role
     self.role ||= "customer"
   end

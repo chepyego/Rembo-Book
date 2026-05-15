@@ -5,7 +5,15 @@ class ApplicationController < ActionController::Base
   include Authentication # Keep this if it contains non-auth related helpers/logic
   allow_browser versions: :modern
 
+
+
   private
+
+  def authorize_staff!
+    unless current_user&.staff?
+      redirect_to root_path, alert: "not authorize to access this"
+    end
+  end
 
   def set_current_tenant
     return if request.subdomain.blank?

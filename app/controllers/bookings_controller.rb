@@ -14,7 +14,11 @@ class BookingsController < ApplicationController
 
   def index
     # Only show bookings for the logged-in user
-    @bookings = current_user.bookings
+    if current_user.admin?
+      @bookings = Current.tenant.bookings
+    else
+      @bookings = Current.tenant.bookings.for_user(current_user)
+    end
   end
 
   def success
@@ -26,11 +30,8 @@ class BookingsController < ApplicationController
   end
 
   def create
-    if current_user
-       @booking = current_user.bookings.build(booking_params) # Use .build
-    else
-       @booking = Booking.new(booking_params)
-    end
+       @booking = Current.tenant.bookings.build(booking_params) # Use .build
+       @booking.user = current_user if current_user
 
     if @booking.save
       # BookingMailer.confirmed_booking(@booking).deliver_now
@@ -57,7 +58,7 @@ class BookingsController < ApplicationController
   end
 
   def set_booking
-    @booking = Booking.find(params[:id])
+    @booking = Current.tenant.bookings.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "Booking not found."
   end

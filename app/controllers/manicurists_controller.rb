@@ -1,9 +1,11 @@
 class ManicuristsController < ApplicationController
+  before_action :authorize_staff!, only: %i[create update edit destroy]
+  before_action :authenticate_user!, only: %i[create index show update edit destroy ]
   before_action :set_manicurist, only: %i[ show edit update destroy ]
 
   # GET /manicurists or /manicurists.json
   def index
-    @manicurists = Manicurist.all
+    @manicurists = Current.tenant.manicurists.all
   end
 
   # GET /manicurists/1 or /manicurists/1.json
@@ -12,7 +14,7 @@ class ManicuristsController < ApplicationController
 
   # GET /manicurists/new
   def new
-    @manicurist = Manicurist.new
+    @manicurist = Current.tenant.manicurists.build
   end
 
   # GET /manicurists/1/edit
@@ -21,7 +23,7 @@ class ManicuristsController < ApplicationController
 
   # POST /manicurists or /manicurists.json
   def create
-    @manicurist = Manicurist.new(manicurist_params)
+    @manicurist = Current.tenant.manicurists.build(manicurist_params)
 
     respond_to do |format|
       if @manicurist.save
@@ -60,7 +62,7 @@ class ManicuristsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_manicurist
-      @manicurist = Manicurist.find(params.expect(:id))
+      @manicurist = Current.tenant.manicurists.find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.

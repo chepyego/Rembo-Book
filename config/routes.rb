@@ -1,16 +1,9 @@
 Rails.application.routes.draw do
-  get "dashboard/index"
-  resources :schedules
-  resources :clients
-  resources :manicurists
-
-  resources :services do
-    collection do
-      get :search
-    end
-  end
-
-  resources :bookings
+# main routes
+root "home#index"
+get "home#about_us", to: "home#about_us", as: :about_us
+get "home#contact_us", to: "home#contact_us", as: :contact_us
+resource :salon_registration
 
   namespace :settings do
     get "/", to: "dashboard#show", as: :root
@@ -18,51 +11,37 @@ Rails.application.routes.draw do
     resource :password, only: [ :show, :update ]
     resource :profile, only: [ :show, :update ]
     resource :user, only: [ :show, :destroy ]
-    # get
-
-    # root to: "dashboard/show"
-    # root to: redirect_to("/home/show")
-
-
-    # root to: redirect("/settings/profile")
   end
 
-    # admin panel
-
-
-
-
-
-    # constraints ->(request) { request.session[:user_id] && User.find_by(id: request.session[:user_id]&.admin?) } do
-    # authenticate :user, ->(u) { u.admin? } do
-
-    mount Avo::Engine, at: "/avo"
-  # mount Avo::Engine, at: Avo.configuration.root_path
-  # end
-
-  # end
+  mount Avo::Engine, at: "/avo"
   resource :sign_up
-
   resource :session
   resources :passwords, param: :token
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"
-  root "home#index"
-  get "home#about_us", to: "home#about_us", as: :about_us
-  get "home#contact_us", to: "home#contact_us", as: :contact_us
-
-  # get "services/search", to: "services#search", as: :search_services
 
 
-  get "bookings/:id/success", to: "bookings#success", as: "success_booking"
+
+# subdomain routes
+  constraints subdomain: /.+/ do
+    get "dashboard", to: "dashboard#index", as: :dashboard
+    resources :services do
+      collection do
+        get :search
+      end
+    end
+    resources :schedules
+    resources :manicurists
+      resources :bookings, only: [:new, :create, :index, :destroy] do
+        member do
+            get :success
+
+        end
+      end
+  end
+
+
+
+
+
 end

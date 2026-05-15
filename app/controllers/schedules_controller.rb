@@ -1,9 +1,9 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: %i[ show edit update destroy ]
-
-  # GET /schedules or /schedules.json
+  before_action :authenticate_user!, only: %i[index new create edit show update destroy]
+  before_action :authorize_staff!, only: %i[create destroy new update]
+  before_action :set_schedule, only: %i[show edit update destroy]
   def index
-    @schedules = Schedule.all
+    @schedules = Current.tenant.schedules.all
   end
 
   # GET /schedules/1 or /schedules/1.json
@@ -12,7 +12,7 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/new
   def new
-    @schedule = Schedule.new
+    @schedule = Current.tenant.schedules.build
   end
 
   # GET /schedules/1/edit
@@ -21,7 +21,7 @@ class SchedulesController < ApplicationController
 
   # POST /schedules or /schedules.json
   def create
-    @schedule = Schedule.new(schedule_params)
+    @schedule = Current.tenant.schedules.build(schedule_params)
 
     respond_to do |format|
       if @schedule.save
@@ -60,7 +60,7 @@ class SchedulesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_schedule
-      @schedule = Schedule.find(params.expect(:id))
+      @schedule = Current.tenant.schedules.find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
