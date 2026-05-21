@@ -22,7 +22,7 @@ resource :salon_registration
 
 
 
-# subdomain routes
+  # subdomain routes
   constraints subdomain: /.+/ do
     get "dashboard", to: "dashboard#index", as: :dashboard
     resources :services do
@@ -32,16 +32,10 @@ resource :salon_registration
     end
     resources :schedules
     resources :manicurists
-      resources :bookings, only: [:new, :create, :index, :destroy] do
+      resources :bookings, only: [ :new, :create, :index, :destroy ] do
         member do
             get :success
-
         end
       end
   end
-
-
-
-
-
 end
