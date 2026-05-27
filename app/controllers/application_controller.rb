@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     Current.tenant = Tenant.find_by(subdomain: request.subdomain)
 
     unless Current.tenant
-      redirect_to root_path, alert: "salon not found"
+      redirect_to root_url(subdomain: false, host: request.domain), allow_other_host: true
     end
   end
 
