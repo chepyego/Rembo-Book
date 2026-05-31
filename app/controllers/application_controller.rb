@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
 
   def set_current_tenant
     return if request.subdomain.blank?
+
     Current.tenant = Tenant.find_by(subdomain: request.subdomain)
 
     unless Current.tenant

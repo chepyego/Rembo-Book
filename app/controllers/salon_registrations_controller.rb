@@ -1,4 +1,4 @@
-class SalonRegistrationController < ApplicationController
+class SalonRegistrationsController < ApplicationController
   allow_unauthenticated_access only: %i[new create]
 
 
