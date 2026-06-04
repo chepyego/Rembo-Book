@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   before_validation :set_default_role
   has_secure_password
-  belongs_to :tenant
+  belongs_to :tenant, optional: true
+  validates :tenant, presence: true, unless: :admin?
 
 
   has_many :sessions, dependent: :destroy
