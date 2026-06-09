@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_04_14_140313) do
+ActiveRecord::Schema[8.0].define(version: 2026_06_05_104034) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -147,6 +147,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_04_14_140313) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "operating_hours"
     t.index ["subdomain"], name: "index_tenants_on_subdomain", unique: true
   end
 

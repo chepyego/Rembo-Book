@@ -12,6 +12,7 @@ class ServicesController < ApplicationController
    end
   # GET /services or /services.json
   def index
+    @tenant = Current.tenant
     @services = Current.tenant.services.all
     # @services = Service.paginate(page: params[:page], per_page: 6).order("sort ASC")
   end

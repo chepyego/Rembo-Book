@@ -3,6 +3,7 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   config.action_dispatch.tld_length = 1
   config.hosts << ".lvh.me"
+  Rails.application.routes.default_url_options = { host: "lvh.me", port: 3000 }
 
 
   # Settings specified here will take precedence over those in config/application.rb.

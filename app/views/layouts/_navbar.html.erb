@@ -1,22 +1,28 @@
-<div class="p-0  md:p-8 md:shadow-sm">
-    <ul class="hidden md:visible text-gray-600 text-lg font-light md:flex justify-center items-center gap-10 px-8 py-4">
+<div class="p-0  md:p-3 md:shadow-sm">
+    <ul class="hidden  text-gray-600 text-lg font-light md:flex  items-center gap-10 px-8 py-4">
           <%= link_to root_path do %>
-            <h1 class="absolute left-10 top-3 "><%= image_tag "LOGO3.png", class:" h-24 w-24 " %></h1>
+            <h1 class="mr-auto "><%= image_tag "LOGO3.png", class:" h-24 w-24 " %></h1>
           <% end %>  
           <li class="md:hidden">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4">
                <path fill-rule="evenodd" d="M2 2.75A.75.75 0 0 1 2.75 2h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 2.75Zm0 10.5a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75ZM2 6.25a.75.75 0 0 1 .75-.75h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 6.25Zm0 3.5A.75.75 0 0 1 2.75 9h10.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 9.75Z" clip-rule="evenodd" />
             </svg>
           </li>
-        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to'HOME', root_path %></li>
-        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to 'ABOUT US',about_us_path %></li>
-        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1">PAGES</li>
-        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to 'SERVICES', services_path %></li>
-        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to 'CONTACT US', contact_us_path %></li>
-          
-        <li><%= link_to 'BOOK NOW', new_booking_path, class:" bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-lg shadow-lg transition-all"%></li>
-              
-                <li class="relative last:ml-36" data-controller="drop">
+        
+        <div class="flex  mx-auto gap-8"> 
+          <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to'Pricing', root_path %></li>
+          <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to 'Features',about_us_path %></li>
+          <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to 'About',about_us_path %></li>
+        </div>
+
+        <div class="flex gap-4 ml-auto">
+            <li><%= link_to "Log in", new_session_path, class: "text-gray-900 hover:text-pink-600" unless authenticated? %></li>
+            <li><%= button_to "Logout", session_path, method: :delete, class: " text-gray-900 hover:text-pink-600" if authenticated? %></li>
+
+
+            <li class=""><%= link_to 'Register Your Salon', new_salon_registration_path, class:" bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-lg shadow-lg transition-all"%></li>
+        </div>
+                <li class=" hidden relative last:ml-36" data-controller="drop">
                     <button type="button" data-action="click->drop#toggle click@window->drop#hide">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 hover:text-pink-700">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -40,51 +46,7 @@
     </ul>
 </div>
 
-<div class=" hidden mobile navigation mx-auto ">
 
-  <div class="hidden sm:hidden">
-       <%= 
-            items = [
-              ["home",root_path],
-              ["CONTACT US"],
-              ['BOOK NOW', new_booking_path],
-              ['login',new_session_path]
-  
-  
-        ] %>
-  </div>
-    <div class=" md:hidden flex items-center justify-between px-4 py-3 bg-peach-100">
-     <h1 class=" "><%= image_tag "LOGO3.png", class:" h-24 w-24 " %></h1>
-     <div class="relative " data-controller="drop">
-        <button type="button" data-action="click->drop#toggle click@window->drop#hide">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 hover:text-pink-700">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-          </svg>
-        </button>
-
-        <div data-drop-target="menu" class="absolute right-0 mt-2 w-20 bg-white shadow-md rounded-md hidden">
-          <div class="py-1">
-            <%= link_to "Login", new_session_path, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" unless authenticated? %>
-            <%= button_to "Logout", session_path, method: :delete, class: "block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" if authenticated? %>
-            
-          </div>
-        </div>
-      </div>
-    </div>  
-   <%= select_tag nil, options_for_select(items, request.path), class: "sm:hidden flex justify-center items-center  shadow-md mt-8 w-full border text-center py-2 bg-white", onChange: "Turbo.visit(this.selectedOptions[0].value)" %>
-
-    <ul class="hidden ">
-        <% items.each do |text,path| %>
-            <li><%=  link_to text, path %></li>
-
-          <% end %>
-
-    </ul>
-
-   
-
-
-</div>
 
 <div  data-controller="mobile-new" class=" py-3 shadow-md new Mobile navigation md:hidden  ">
    <div class=" flex justify-between mx-4 items-center">
@@ -104,14 +66,17 @@
         <svg data-action="click->mobile-new#toggle xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" hover:bg-red-500 size-6 absolute top-5 right-5">
            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
-        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to'HOME', root_path %></li>
-        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to 'ABOUT US',about_us_path %></li>
-        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1">PAGES</li>
-        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to 'SERVICES', services_path %></li>
-        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to 'CONTACT US', contact_us_path %></li>
+        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to'FEATURES', root_path %></li>
+        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to 'PRICING',about_us_path %></li>
+        <li class="hover:text-red-300 transition duration-300 ease-in-out transform hover:translate-x-1"><%= link_to 'ABOUT',about_us_path %></li>
+        <li class class=""><%= link_to "LOG IN", new_session_path, class: "text-gray-600 hover:text-pink-600" %></li>
+
+        <li class=""><%= link_to 'Register Your Salon', new_salon_registration_path, class:" bg-pink-600 hover:bg-pink-700 text-white px-3 py-2 rounded-lg shadow-lg transition-all"%></li>
+
+        
           
               
-            <li class="relative last:ml-36" data-controller="drop">
+            <li class=" hidden relative last:ml-36" data-controller="drop">
               <button type="button" data-action="click->drop#toggle click@window->drop#hide">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 hover:text-pink-700">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />

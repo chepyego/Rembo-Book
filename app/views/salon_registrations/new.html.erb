@@ -25,7 +25,7 @@
               <p class="text-sm text-gray-500 mt-1">
                  Your booking link: 
                   <span id="subdomain_preview" class="font-medium text-black">
-                        your-salon.nailbooker.co.ke
+                        your-salon.rembohub.co.ke
                   </span>
               </p>
               <%= t.label :subdomain %>
@@ -47,6 +47,10 @@
             <div class="mt-2">
               <%= t.label :email %>
               <%= t.email_field :email, required: true, autocomplete: "new-password", class:"block shadow rounded-md  border border-gray-400 outline-none px-3 py-2 mt-2 w-64 md:w-80" %>
+            </div>
+             <div class="mt-2">
+              <%= t.label :operating_hours %>
+              <%= t.text_field :operating_hours, required: true, placeholder:"Mon-Sat: 8am-6pm, Sun: Closed", class:"block shadow rounded-md  border border-gray-400 outline-none px-3 py-2 mt-2 w-64 md:w-80" %>
             </div>
 
             
@@ -72,7 +76,7 @@
 
 
    document.getElementById('tenant_subdomain').value = subdomain
-   document.getElementById('subdomain_preview').textContent = subdomain + '.nailbooker.co.ke'
+   document.getElementById('subdomain_preview').textContent = subdomain + '.rembobook.co.ke'
 
 
   })

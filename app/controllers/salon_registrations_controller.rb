@@ -5,7 +5,7 @@ allow_unauthenticated_access only: %i[new create_step_one new_step_two create]
     @tenant = Tenant.new(session[:tenant_params] || {})
   end
   def create_step_one
-     session[:tenant_params] = params.require(:tenant).permit(:name, :subdomain, :email, :phone_number, :location)
+     session[:tenant_params] = params.require(:tenant).permit(:name, :subdomain, :email, :phone_number, :location, :operating_hours)
 
      redirect_to new_step_two_salon_registration_path
   end
@@ -37,7 +37,7 @@ allow_unauthenticated_access only: %i[new create_step_one new_step_two create]
   private
 
    def tenant_params
-     params.expect(tenant: [ :name, :subdomain, :email, :location, :phone_number ])
+     params.expect(tenant: [ :name, :subdomain, :email, :location, :phone_number, :operating_hours ])
    end
 
    def user_params

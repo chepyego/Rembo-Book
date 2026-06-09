@@ -12,9 +12,20 @@ class SessionsController < ApplicationController
 
     if user = User.authenticate_by(email_address: credentials[:email_address], password: credentials[:password])
       start_new_session_for user
-      redirect_to dashboard_index_path
+
+      if user.admin?
+        redirect_to avo.root_path
+
+      elsif user.salon_admin?
+
+        redirect_to dashboard_url(subdomain: user.tenant.subdomain), allow_other_host: true
+      else
+        redirect_to root_path
+      end
+
+
     else
-          redirect_to new_session_path, alert: "Try another email address or password."
+          redirect_to new_session_path, alert: "Try another email or password"
     end
   end
 

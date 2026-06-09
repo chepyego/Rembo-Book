@@ -1,175 +1,150 @@
-<div class="  mx-auto px-4 md:px-8   container ">
-    <div class="image-banner  mt-2  sm:py-72 py-10 sm:px-20 px-4 md:flex justify-between block">
-        <div class=" bg-white/20 mb-2  md:p-0 px-8 ">
-            <h2 class=" md:text-4xl text-2xl hidden md:flex font-semibold text-gray-900 ">Make Your Nail Saloon <br> Booking Effortlessy</h2>
-            <h2 class=" text-3xl md:hidden  text-center font-bold text-gray-900 ">Manage Your Nail Saloon Bookings Effortlessly</h2>
+<div>
+  <%= render 'layouts/navbar' %>
 
-            <p class="md:text-gray-900 text-white mt-2 text-2xl md:text-xl leading-relaxed ">Stop losing clients to missed appointments<br> Let customers book online and manage your schedule with ease</p>
-            <button class="bg-pink-600 md:block hidden text-white py-4 px-6  text-sm  shadow-md hover:bg-pink-700 transition rounded-lg font-semibold md:mt-4 mt-6"><%= link_to 'ABOUT US', contact_us_path %> </button>
-            <button class=" mt-10 mx-auto md:hidden bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 w-full rounded-lg shadow-lg transition-all"><%= link_to 'BOOK NOW', new_booking_path%></button>
+
+</div>
+<div class="  mx-auto px-4 md:px-8   container ">
+
+    <div class="image-banner  mt-2  sm:py-72 py-10 sm:px-20 px-4 md:flex justify-between block">
+        <div class=" bg-white/20 mb-2  md:p-6 px-8 ">
+            <h2 class=" md:text-4xl text-2xl  md:flex font-semibold text-gray-900 ">Tired of managing your salon on <br> Whatsaap?</h2>
+            <p class=" mt-2 md:text-3xl text-xl   flex md:text-gray-900 text-white ">RemboBook gives your salon a professional <br> online presence in 2 minutes.</p>
+
+            <button class="flex justify-center items-center bg-pink-600 md:block text-white md:py-4 py-3  px-6  text-sm  shadow-md hover:bg-pink-700 transition rounded-lg font-semibold md:mt-4 mt-6"><%= link_to 'Register Your Salon free', new_salon_registration_path %>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="  size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+                  </svg>
+                
+           </button>
+            <p class="flex mt-2 hover:text-pink-500">
+               <%= link_to "Already have an account? Log in", new_session_path, class: "hover:text-pink-500" %>
+              <span class="flex justify-center items-center ml-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
+             </svg></span>
+           </p>
         </div>
 
     </div>
-        <div class="">
+            
+    <div class="my-12 md:py-6">
+     <h3 class="text-gray-900 text-xl md:text-4xl text-center font-semibold mb-4 md:py-6">what you get from RemboBook</h3>
 
-            <div class=" hidden mt-2 py-16 sm:flex  gap-x-40">
-              <h2 class="md:text-4xl text-xl font-semibold mb-4 md:mb-0 p2 ">Unleashing Creativity:<br> A Nail Art Haven</h2>
-              <p>Enter our vibrant and inspiring space, designed to your imagination <br>and awaken your artistic spirit Feel the energy and passion that<br> radiates from our skilled nail artist, who are dedicated to turning<br> your nails dreams into reality</p>
-
-            </div>
-          <div class=" hidden pb-10 sm:flex gap-10">
-            <%= image_tag("sample2.jpg", :alt => "nail art",  :class=>"w-64 h-96") %>
-            <%= image_tag("sample1.jpg", :alt => "nail art",  :class=>"w-96 h-48") %>
-            <%= image_tag("sample3.jpg", :alt => "nail art",  :class=>"w-64 h-64") %>
+      <div class="md:flex justify-center items-center gap-6">
+        
+        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
+          <div class="mb-2">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="bg-pink-500 text-white size-6">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
+            </svg>
 
           </div>
+          <p class="font-bold mb-2">online booking page</p>
+          <p>Share your link on WhatsApp and Instagram.Customers book themselves — no calls needed."</p>
+        </div> 
 
+        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
+          <div class="mb-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" bg-pink-500 text-white size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+             </svg>
+
+          </div>
+          <p class="font-bold mb-2">Mpesa payments</p>
+            <p>Accept deposits and payments directly.No more no-shows. Money in your account </p>
+        </div> 
+
+        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
+          <div class="mb-2">
+             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 bg-pink-500 text-white">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+            </svg>
+
+          </div>
+          <p class="font-bold mb-2">Sms reminders</p>
+          <p>automatic reminders sent to customers.Reduce no-shows by up to 60%</p>      
+         </div> 
+      </div>
 
     </div>
+    <div class="my-12">
+      <h3 class="text-gray-900 text-xl md:text-4xl text-center font-semibold mb-4 ">How it works</h3>
+      
+      <div class="md:flex">
+        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
+          <div class="flex items-center mb-6">
+           <div class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center text-sm font-bold">1</div>
+           <div class="flex-1 h-1 bg-gray-200 mx-2"></div>
+          </div>
+           <p class="font-bold mb-2 text-gray-900">Create account</p>
+           <p> Sign up and create your account in 2 minutes</p>
+          <div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              </svg>
+
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
+           <div class="flex items-center mb-6">
+           <div class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center text-sm font-bold">2</div>
+           <div class="flex-1 h-1 bg-gray-200 mx-2"></div>
+          </div>
+          <p class="font-bold text-gray-900 mb-2">Create services</p>
+          <p> add your services with their pricing</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
+          <div class="flex items-center mb-6">
+           <div class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center text-sm font-bold">3</div>
+           <div class="flex-1 h-1 bg-gray-200 mx-2"></div>
+          </div>
+          <p class="font-bold text-gray-900 mb-2">share your link</p>
+          <p> Share your website url to your network and get instant bookings</p>
+        </div>
+      </div>
+      
+    </div>
+  
+    <div class="my-12 ">
+     <h3 class="text-gray-900 text-xl md:text-4xl text-center font-semibold mb-4 md:py-6">Pricing</h3>
+      <div class="md:flex items-center ">
+        <div class=" mx-auto bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 md:p-12 transition-transform hover:scale-[1.02] duration-200">
+          <p class="font-bold text-gray-900 mb-2">Free- forever free</p>
+          <ul class="list-disc">
+              <li class="list-disc">Online booking page</li>
+              <li class="list-disc">Up to 50 bookings/month</li>
+              <li class="list-disc">staff member</li>
+              <li class="list-disc">RemboBook branding</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6  md:p-12 transition-transform hover:scale-[1.02] duration-200">
+            <p class="font-bold text-gray-900 mb-2">STANDARD- kes,1000/per month</p>
+            <ul class="list-disc">
+                <li class="list-disc">unlimited booking page</li>
+                <li class="list-disc">Sms reminders</li>
+                <li class="list-disc">Mpesa payments</li>
+                <li class="list-disc">Remove RemboBook branding</li>
+            </ul>
+            
+        </div>
+
+        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 md:p-12 transition-transform hover:scale-[1.02] duration-200">
+            <p class="font-bold text-gray-900 mb-2">PREMIUM- kes,1500/per month</p>
+            <ul class="list-disc">
+                <li class="list-disc">Everthing in standard</li>
+                <li class="list-disc">Analytic data</li>
+                <li class="list-disc">AI booking assistant[Phase 2]</li>
+            </ul>
+            
+        </div>
+
+      </div>
+    </div>
     
-    <div class="mobile-swiper  ">
+        
+    <div class="mobile-swiper hidden  ">
       <%= render 'mobileSwiper' %>
-
-    </div>
-
-    <div class="mt-2 py-10 ">
-      <h2 class="text-center md:text-4xl text-2xl font-semibold mb-2">Why Choose us</h2>
-      <h3 class=" mb-4 text-center gray-900">At Glam nails we understand that when it comes to nail art you have many options to choose from</h3>
-    </div>
-    <div class=" pb-0 sm:pb-10">
-        <ul class="md:flex gap-10 block ">
-            <li class=" h-fit rounded-md   ">
-                <div data-controller="read-more" class="w-full  p-10  universal-color   ">
-                    <div class="">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"style="width: 36px; height: 36px; background-color:black" class="size-6 text-white ">
-                       <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-                       </svg>
-                    </div>
-
-
-                      <h1 class="text-xl font-semibold mb-2 mt-4">Years of Experience</h1>
-                     <p class="">We bring a wealth of experience to the world of nail<br> art, you have many options to choose from</p>
-                      <button data-read-more-target="button" data-action="click->read-more#open" class=" hover:text-red-300 mt-2 ">READ MORE
-                        </svg>
-                   </span></button>
-                   <div  class="hidden" data-read-more-target="para1"></div>
-
-                   
-                </div>
-                <div class=" w-fit h-fit universal-color p-10 mt-4 m-2  transition-transform hover:scale-[1.02] duration-200 ">
-                    <div class="">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 36px; height: 36px; background-color:black" class="size-6 text-white">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                     </svg>
-
-                    </div>
-
-
-                    <h1 class="text-xl font-semibold mb-2 mt-4">Experience staff</h1>
-                     <p class="">We bring a wealth of experience to the world of nail<br> art, you have many options to choose from</p>
-                     <p class="mt-2">READ MORE<span class="w-3 h-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 800 600" stroke-width="1.5" stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                      </svg>
-                   </span></p>
-
-                   
-                </div>
-
-
-
-
-
-
-                
-            </li>
-            <li class="universal-color  h-fit w-fit p-10 "> 
-                <h1 class="md:text-4xl text-2xl text-gray-800 mb-2  ">Lets Book Now! </h1>
-                <p>Book your appointment with us today!,join us <br>to help you with your nail journey</p>
-                <button class="bg-black text-white md:px-8 px-4 py-2 md:py-3 mt-4 shadow-lg transition-all hover:bg-pink-700"><%= link_to 'Book An appointment', new_booking_path %></button>
-                <%= image_tag("one-hand-2.png", alt:"one hand art") %>
-            </li>
-            <li class=" ">
-                 <div class="universal-color h-auto p-10 w-80 ">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 36px; height: 36px; background-color:black"class="size-1.5 text-white">
-                       <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                    </svg>
-
-                    <h1 class="font-semibold text-xl mt-2">Best Quality</h1>
-                    <p class="mt-2">You will notice unwavering quality services</p>
-                    <p class="mt-2">READ MORE<span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:20px; height:20px" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                       </svg></span>
-                    </p>
-                  </div>
-
-                    <div class="mt-4 universal-color h-auto p-10 w-80 hover:bg-inherit">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 36px; height: 36px; background-color:black"class="size-1.5 text-white">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                        </svg>
-
-                        <h1 class="font-semibold text-xl mt-2">Trend Awareness</h1>
-                        <p class="mt-2">We ensure that we keep up with trends</p>
-                        <p class="mt-2">READ MORE</p>
-                    </div>
-              
-              
-            </li>
-            <li></li>
-
-
-
-
-        </ul>
-    </div>
-    
-    <div class=" universal-color py-20 block  md:flex justify-center gap-10 prices">
-     <%= image_tag("nail-art.jpg", alt:"manicure hand", class:"md:w-56 md:h-96 w-full h-full") %>
-     <div class="ml-4 md:ml-0 ">
-        <h1 class=" mb-2 md:mb-0 mt-2 md:mt-0 md:text-4xl text-2xl md:font-semibold font-medium text-gray-800">Pricing For Manicure</h1>
-        <p class="mt-2 mb-2">Our skilled and experienced to providing exceptional Medicaure <br>services the beautify of your feet</p>
-
-        <H3 class="text-lg font-medium text-gray-800">Basic Manicure ........................ksh 1500</H3>
-        <p>A buffer is used to smooth the surface of the nails</p>
-
-        <h3 class="text-lg font-medium text-gray-800 mt-2 mb-2">Glue Manicure....................ksh 2000</h3> 
-        <p>The nails are shaped and filled to the desired length and shape</p> 
-
-        <H3 class="text-lg font-medium text-gray-800 mt-2 mb-2">French Manicure...............ksh 4000</h3>
-        <P>he nails are cleaned, is removed to create a clean surface</p>
-
-        <h3 class="text-lg font-medium text-gray-800 mt-2 mb-2">Gel of manicure..................ksh 3500</h3>
-        <p>Providing a smooth surface for the gel polish with adhesion</p>
-
-        <button class="bg-black py-3 px-5 text-white mt-4 rounded-lg shadow-lg transition-all hover:bg-pink-700"><%= link_to 'BOOK NOW', new_booking_path%></button>
-     </div>
-
-
-    </div>
-    <div class=" universal-color py-20 block md:flex md:justify-center md:gap-10 prices">
-     <div class="ml-4 md:ml-0">
-        <h1 class="md:text-4xl text-2xl font-semibold text-gray-800">Pricing For Pedicure</h1>
-        <p class="mt-2 mb-2 font-semibold">Our skilled and experienced to providing exceptional Pedicure <br>services the beautify of your feet</p>
-
-        <H3 class="text-lg font-medium text-gray-800">Regular Pedicure ........................ksh 1500</H3>
-        <p>Your feet are immersed in a warm foot bath infused</p>
-
-        <h3 class="text-lg font-medium text-gray-800 mt-2 mb-2">Spa Pedicure....................ksh 2000</h3> 
-        <p>The spa pedicure creates a serene and tranguil enviroment</p> 
-
-        <H3 class="text-lg font-medium text-gray-800 mt-2 mb-2">French Pedicure...............ksh 4000</h3>
-        <P>Begin with relaxing foot soak to soften the skin for treatment</p>
-
-        <h3 class="text-lg font-medium text-gray-800 mt-2 mb-2">Herbal Pedicure..................ksh 3500</h3>
-        <p>The feet are immersed in a warm herbal soal infused</p>
-
-        <button class="bg-black py-3 px-5 text-white mt-4 mb-4 md:mb-0 rounded-lg shadow-lg transition-all hover:bg-pink-700"><%= link_to 'BOOK NOW', new_booking_path%></button>
-     </div>
-        <%= image_tag("pedicure.jpg", alt:"pedicure leg", class:"  md:w-96 md:h-96 w-full object-cover") %>
-
-
-
-
     </div>
 
 </div>

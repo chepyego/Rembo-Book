@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Nail Booker" %></title>
+    <title><%= content_for(:title) || "Rembo Hub" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -43,8 +43,7 @@
     <div class=" absolute top-40  text-green-600 notice"><%= notice %></div>
     <div class="alert"><%= alert %></div>
 
-    <%= render 'layouts/navbar' %>
-    
+
       <%= content_for?(:content) ? yield(:content) : yield %>
 
       <%= render 'layouts/footer' %>
