@@ -1,6 +1,26 @@
-<p><%= @tenant.name %></p>
-<p><%= @tenant.operating_hours %></p>
-<p><%= @tenant.location %></p>
+
+<div class="m-6 py-6 flex flex-col items-center text-center">
+  <div class="w-3/4 border-gray-900 border-dashed border"></div>
+
+  <p class="mt-4 mb-4">
+    Beauty Studio <%= @tenant.name %>
+  </p>
+
+  <p class="mb-4">
+    <%= @tenant.location %>
+  </p>
+
+  <p class="mb-4">
+    Operating Hours:<br>
+    <%= @tenant.operating_hours %>
+  </p>
+
+  <p class="mb-4">
+    Call/whatsapp:<%= @tenant.phone_number %>
+  </p>
+
+  <div class="w-3/4 border-gray-900 border-dashed border"></div>
+</div>
 
 <div class="w-full py-10">
     <%= render 'search' %>
@@ -14,10 +34,17 @@
   <% content_for :title, "Services" %>
 
   <div class="text-center">
-    <h1 class="font-bold text-4xl text-center mb-4 text-gray-900 p-8">Services</h1>
- 
+    <div class="text-center py-8">
+      <h1 class="md:text-4xl text-2xl font-bold text-gray-900">
+        Choose a Service
+      </h1>
+
+      <p class="mt-2 text-gray-500">
+        Select a service below to book your appointment.
+      </p>
+    </div> 
       <% if current_user&.staff? %>
-        <%= link_to "New service", new_service_path, class: " rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+        <button class="flex ml-auto m-4"><%= link_to "New service", new_service_path, class: " flex rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %></button>
       <% end %> 
     
   </div>
@@ -28,4 +55,5 @@
       
     <% end %>
   </div>
+  
 </div>

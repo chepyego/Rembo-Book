@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
-  before_action :set_current_user, :set_current_tenant
+  include Authentication
+
+  before_action :resume_session
+  before_action :set_current_tenant
   helper_method :current_user
 
-  include Authentication # Keep this if it contains non-auth related helpers/logic
+  # Keep this if it contains non-auth related helpers/logic
   allow_browser versions: :modern
 
 
@@ -32,13 +35,10 @@ class ApplicationController < ActionController::Base
   end
 
 
-  def set_current_user
-    @current_user = User.find_by(id: session[:user_id]) if session[:user_id]
-  end
 
 
   def current_user
-    @current_user
+    Current.user
   end
 
   def authenticate_admin!

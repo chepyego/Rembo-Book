@@ -6,7 +6,11 @@ class HomeController < ApplicationController
 
   def index
      if Current.tenant
+      if current_user&.salon_admin?
+        redirect_to dashboard_url(subdomain: current_user.tenant.subdomain), allow_other_host: true
+      else
        redirect_to services_path
+      end
      end
   end
   def about_us;end

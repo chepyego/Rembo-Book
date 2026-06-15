@@ -1,4 +1,8 @@
+
+<div class="mx-2"><%= render 'dashboard_navbar' %></div>
+
 <div class="py-20 mx-auto">
+  
   <p> <%= @booking_grouping %></p>
 
     <div class=" text-2xl text-center text-red-300 mb-4 pb-6">
@@ -11,16 +15,19 @@
     <% @bookings.each do |booking| %>
       <div  class=" bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200"> 
 
-       <p>💅  <%= booking.service.title %><br><br></p>
+       <p>💅  <%= booking.service.title %></p>
+       <p class="mb-2 mt-2"><%= booking.name %></p>
+       <p class="mb-2"><%= booking.phone_number %></p>
         <p class="flex items-center text-red-400 ">
           <span class="h-4 w-4 mr-2 ">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="text-red-400 size-2">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
             </span>
-            <%= booking.date.strftime("%d %b %Y • %I:%M %p") %><br>
+            <%= booking.date&.strftime("%d %b %Y • %I:%M %p") %><br>
          
         </p>
+        
         </div>
       <% end %>
   </div>

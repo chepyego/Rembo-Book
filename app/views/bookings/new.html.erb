@@ -32,7 +32,7 @@
 
       <div class="mt-4">
           <%= form.label :service_id, "Select a service", class: "block text-sm font-medium text-gray-700 mb-1"  %>
-          <%= form.collection_select :service_id, Service.all, :id, :title,{prompt: "Please select the service"}, class:" w-full md:w-80 py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500" %>
+          <%= form.collection_select :service_id, Current.tenant.services, :id, :title,{ selected: params[:service_id] }, class:" w-full md:w-80 py-3 px-4 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500" %>
       </div>
 
       <div class="mt-4 mb-4">

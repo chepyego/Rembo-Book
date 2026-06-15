@@ -1,7 +1,14 @@
 
-<div class="ml-4 mx-auto">
-    <%= form_with url: search_services_path, method: :get do |form| %>
-     <%= form.search_field :q,placeholder:"search", class:"w-96 h-10 bg-gray-100 border-0 rounded-full outline  mr-2" %>
-     <%= form.submit "search" %>
-    <% end %>
+<div class="flex justify-center md:my-8 my-2">
+  <%= form_with url: search_services_path, method: :get,
+      class: "flex items-center gap-2 w-full md:max-w-lg max-w-fit " do |form| %>
+
+    <%= form.search_field :q,
+      placeholder: "Search manicure, pedicure, nail art...",
+      class: "flex-1 h-12 px-4 bg-white rounded-full border border-gray-300 focus:ring-2 focus:ring-pink-500 focus:outline-none" %>
+
+    <%= form.submit "Search",
+      class: "h-12 px-6  bg-pink-600 text-white rounded-full font-medium hover:bg-pink-700 cursor-pointer" %>
+
+  <% end %>
 </div>
