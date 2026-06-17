@@ -42,12 +42,15 @@
 
     <div class=" absolute top-40  text-green-600 notice"><%= notice %></div>
     <div class="alert"><%= alert %></div>
-
-
+       <% if Current.tenant && current_user&.staff? %>
+          <%=  render 'layouts/dashboard_navbar' %>
+        <% elsif !Current.tenant   %>
+            <%= render 'layouts/navbar' %>
+        <% end %>
       <%= content_for?(:content) ? yield(:content) : yield %>
-
-      <%= render 'layouts/footer' %>
-
+     <% unless Current.tenant %>
+       <%= render 'layouts/footer' %>
+     <% end %>
 
 
   </body>

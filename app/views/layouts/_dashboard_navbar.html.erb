@@ -21,8 +21,10 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0">
       
       <ul class="flex items-center justify-between sm:justify-start gap-6 sm:gap-8 border-b sm:border-none pb-3 sm:pb-0">
-        <li class="font-semibold text-gray-800 text-lg">Dashboard</li>
-        <li class="font-medium text-gray-600 hover:text-gray-900 transition-colors text-sm sm:text-base">Bookings</li>
+        <li class="font-semibold text-gray-800 text-lg"><%= link_to 'Dashboard', dashboard_path %></li>
+        <li class="font-medium text-gray-600 hover:text-gray-900 transition-colors text-sm sm:text-base"><%= link_to 'Bookings', bookings_path %></li>
+        <li class="font-medium text-gray-600 hover:text-gray-900 transition-colors text-sm sm:text-base"><%= link_to 'services', services_path %></li>
+
       </ul>
 
       <div class="flex items-center justify-between sm:justify-end gap-4 sm:gap-6 w-full sm:w-auto">

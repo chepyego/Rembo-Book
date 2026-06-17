@@ -1,8 +1,9 @@
 <h1>View all my bookings</h1>
 
 <% @bookings.each do |booking| %>
-<p><%= booking.service.name %></p>
-<p><%= booking.date.strftime("%B %d, %Y %H:%M") %></p>
-<%=  link_to "view Details", booking_path(booking) %>
+    <p><%= booking.service.name %></p>
+    <p><%= booking.date.strftime("%B %d, %Y %H:%M") %></p>
+    <%=  link_to "view Details", booking_path(booking) %>
 
-<%= button_to "cancel", @booking, method: :delete, data: { turbo_confirm: "Are you sure"} %>
+    <%= button_to "cancel", @booking, method: :delete, data: { turbo_confirm: "Are you sure"} %>
+<% end %>
