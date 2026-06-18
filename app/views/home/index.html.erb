@@ -1,149 +1,194 @@
-<div>
+<!-- Main Container -->
+<div class="mx-auto px-4 sm:px-6 lg:px-8 container max-w-7xl">
 
-
-</div>
-<div class="  mx-auto px-4 md:px-8   container ">
-
-    <div class="image-banner  mt-2  sm:py-72 py-10 sm:px-20 px-4 md:flex justify-between block">
-        <div class=" bg-white/20 mb-2  md:p-6 px-8 ">
-            <h2 class=" md:text-4xl text-2xl  md:flex font-semibold text-gray-900 ">Tired of managing your salon on <br> Whatsaap?</h2>
-            <p class=" mt-2 md:text-3xl text-xl   flex md:text-gray-900 text-white ">RemboBook gives your salon a professional <br> online presence in 2 minutes.</p>
-
-            <button class="flex justify-center items-center bg-pink-600 md:block text-white md:py-4 py-3  px-6  text-sm  shadow-md hover:bg-pink-700 transition rounded-lg font-semibold md:mt-4 mt-6"><%= link_to 'Register Your Salon free', new_salon_registration_path %>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="  size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-                  </svg>
-                
-           </button>
-            <p class="flex mt-2 hover:text-pink-500">
-               <%= link_to "Already have an account? Log in", new_session_path, class: "hover:text-pink-500" %>
-              <span class="flex justify-center items-center ml-2"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3" />
-             </svg></span>
-           </p>
+  <!-- Hero Section -->
+  <div class="relative mt-6 rounded-2xl overflow-hidden bg-linear-to-r from-pink-50 to-gray-100 border border-gray-200/60 p-6 sm:p-12 lg:p-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+      
+      <!-- Left Column: Copy & CTAs -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-pink-100 text-pink-800">
+          Built for Salon Owners
         </div>
-
-    </div>
-            
-    <div class="my-12 md:py-6">
-     <h3 class="text-gray-900 text-xl md:text-4xl text-center font-semibold mb-4 md:py-6">what you get from RemboBook</h3>
-
-      <div class="md:flex justify-center items-center gap-6">
         
-        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
-          <div class="mb-2">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="bg-pink-500 text-white size-6">
-               <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-gray-900 leading-tight">
+          Tired of managing your salon on <span class="text-pink-600">WhatsApp?</span>
+        </h1>
+        
+        <p class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl">
+          RemboBook gives your salon a professional online presence in just 2 minutes.
+        </p>
+
+        <!-- CTA Action Area -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+          <%= link_to new_salon_registration_path, class: "inline-flex items-center justify-center gap-2 bg-pink-600 text-white py-3.5 px-6 text-base font-semibold shadow-md shadow-pink-600/20 hover:bg-pink-700 transition active:scale-95 rounded-xl text-center" do %>
+            <span>Register Your Salon Free</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
+          <% end %>
 
-          </div>
-          <p class="font-bold mb-2">online booking page</p>
-          <p>Share your link on WhatsApp and Instagram.Customers book themselves — no calls needed."</p>
-        </div> 
-
-        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
-          <div class="mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class=" bg-pink-500 text-white size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
-             </svg>
-
-          </div>
-          <p class="font-bold mb-2">Mpesa payments</p>
-            <p>Accept deposits and payments directly.No more no-shows. Money in your account </p>
-        </div> 
-
-        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
-          <div class="mb-2">
-             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 bg-pink-500 text-white">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+          <%= link_to new_session_path, class: "inline-flex items-center justify-center gap-1.5 text-gray-600 hover:text-pink-600 py-3 font-medium transition" do %>
+            <span>Already have an account? Log in</span>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
             </svg>
+          <% end %>
+        </div>
+      </div>
 
-          </div>
-          <p class="font-bold mb-2">Sms reminders</p>
-          <p>automatic reminders sent to customers.Reduce no-shows by up to 60%</p>      
-         </div> 
+      <!-- Right Column: Perfectly Sized Image Wrapper -->
+      <div class="lg:col-span-5 flex justify-center items-center">
+        <div class="relative w-full max-w-sm sm:max-w-md rounded-2xl border border-gray-200/80 bg-white p-1.5 shadow-xl shadow-gray-300/40 transform lg:rotate-2 hover:rotate-0 transition-transform duration-500 ease-out">
+          <%= image_tag "hero1.png", 
+                        alt: "Modern salon setup", 
+                        loading: "eager",
+                        class: "rounded-xl w-full h-auto object-contain max-h-[350px] md:max-h-[450px]" %>
+        </div>
       </div>
 
     </div>
-    <div class="my-12">
-      <h3 class="text-gray-900 text-xl md:text-4xl text-center font-semibold mb-4 ">How it works</h3>
-      
-      <div class="md:flex">
-        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
-          <div class="flex items-center mb-6">
-           <div class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center text-sm font-bold">1</div>
-           <div class="flex-1 h-1 bg-gray-200 mx-2"></div>
-          </div>
-           <p class="font-bold mb-2 text-gray-900">Create account</p>
-           <p> Sign up and create your account in 2 minutes</p>
-          <div>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                 <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-              </svg>
-
-          </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
-           <div class="flex items-center mb-6">
-           <div class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center text-sm font-bold">2</div>
-           <div class="flex-1 h-1 bg-gray-200 mx-2"></div>
-          </div>
-          <p class="font-bold text-gray-900 mb-2">Create services</p>
-          <p> add your services with their pricing</p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 transition-transform hover:scale-[1.02] duration-200">
-          <div class="flex items-center mb-6">
-           <div class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center text-sm font-bold">3</div>
-           <div class="flex-1 h-1 bg-gray-200 mx-2"></div>
-          </div>
-          <p class="font-bold text-gray-900 mb-2">share your link</p>
-          <p> Share your website url to your network and get instant bookings</p>
-        </div>
-      </div>
-      
+  </div>
+          
+  <!-- Features Section -->
+  <div class="my-20">
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <h2 class="text-2xl md:text-4xl font-bold text-gray-900 tracking-tight">What you get from RemboBook</h2>
+      <p class="text-gray-500 mt-2">Everything you need to automate your local business and focus on your clients.</p>
     </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Feature 1 -->
+      <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 2.994v2.25m10.5-2.25v2.25m-14.252 13.5V7.491a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v11.251m-18 0a2.25 2.25 0 0 0 2.25 2.25h13.5a2.25 2.25 0 0 0 2.25-2.25m-18 0v-7.5a2.25 2.25 0 0 1 2.25-2.25h13.5a2.25 2.25 0 0 1 2.25 2.25v7.5m-6.75-6h2.25m-9 2.25h4.5m.002-2.25h.005v.006H12v-.006Zm-.001 4.5h.006v.006h-.006v-.005Zm-2.25.001h.005v.006H9.75v-.006Zm-2.25 0h.005v.005h-.006v-.005Zm6.75-2.247h.005v.005h-.005v-.005Zm0 2.247h.006v.006h-.006v-.006Zm2.25-2.248h.006V15H16.5v-.005Z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2 capitalize">Online booking page</h3>
+        <p class="text-gray-600 leading-relaxed">Share your unique link on WhatsApp and Instagram and other social platforms. Customers book themselves securely—no phone calls needed.</p>
+      </div> 
+
+      <!-- Feature 2 -->
+      <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2 capitalize">M-PESA payments</h3>
+        <p class="text-gray-600 leading-relaxed">Accept deposits and payments directly via STK Push. Kill no-shows instantly and secure cash directly in your account.</p>
+      </div> 
+
+      <!-- Feature 3 -->
+      <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm hover:shadow-md transition-all duration-300">
+        <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center mb-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2 capitalize">SMS reminders</h3>
+        <p class="text-gray-600 leading-relaxed">Automated reminder texts are pushed directly to your clients. Reduce costly missed appointments by up to 60%.</p>      
+      </div> 
+    </div>
+  </div>
+
+  <!-- How It Works Section -->
+  <div class="my-20 py-12 bg-gray-50 rounded-2xl px-6 sm:px-12">
+    <h2 class="text-2xl md:text-4xl text-center font-bold text-gray-900 mb-12 tracking-tight">How it works</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+      <!-- Step 1 -->
+      <div class="flex flex-col items-start">
+        <div class="flex items-center w-full mb-4">
+          <div class="w-10 h-10 rounded-full bg-pink-500 text-white flex items-center justify-center text-base font-bold shadow-sm">1</div>
+          <div class="hidden md:block flex-1 h-0.5 bg-gray-200 ml-4"></div>
+        </div>
+        <h3 class="font-bold text-lg text-gray-900 mb-1">Create account</h3>
+        <p class="text-gray-600">Sign up and build your tailored business profile in under 2 minutes.</p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="flex flex-col items-start">
+        <div class="flex items-center w-full mb-4">
+          <div class="w-10 h-10 rounded-full bg-pink-500 text-white flex items-center justify-center text-base font-bold shadow-sm">2</div>
+          <div class="hidden md:block flex-1 h-0.5 bg-gray-200 ml-4"></div>
+        </div>
+        <h3 class="font-bold text-lg text-gray-900 mb-1">Create services</h3>
+        <p class="text-gray-600">Add your custom catalogue details along with tiered pricing parameters.</p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="flex flex-col items-start">
+        <div class="flex items-center w-full mb-4">
+          <div class="w-10 h-10 rounded-full bg-pink-500 text-white flex items-center justify-center text-base font-bold shadow-sm">3</div>
+        </div>
+        <h3 class="font-bold text-lg text-gray-900 mb-1">Share your link</h3>
+        <p class="text-gray-600">Broadcast your new website URL directly to your clients and get immediate bookings.</p>
+      </div>
+    </div>
+  </div>
   
-    <div class="my-12 ">
-     <h3 class="text-gray-900 text-xl md:text-4xl text-center font-semibold mb-4 md:py-6">Pricing</h3>
-      <div class="md:flex items-center ">
-        <div class=" mx-auto bg-white rounded-xl shadow-md overflow-hidden max-w-md mb-8 p-6 md:p-12 transition-transform hover:scale-[1.02] duration-200">
-          <p class="font-bold text-gray-900 mb-2">Free- forever free</p>
-          <ul class="list-disc">
-              <li class="list-disc">Online booking page</li>
-              <li class="list-disc">Up to 50 bookings/month</li>
-              <li class="list-disc">staff member</li>
-              <li class="list-disc">RemboBook branding</li>
+  <!-- Pricing Section -->
+  <div class="my-20">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <h2 class="text-2xl md:text-4xl font-bold text-gray-900 tracking-tight">Simple, Transparent Pricing</h2>
+      <p class="text-gray-500 mt-2">Pick a plan that fits your business stage perfectly.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+      
+      <!-- Free Plan -->
+      <div class="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col justify-between shadow-sm">
+        <div>
+          <h3 class="font-bold text-xs uppercase tracking-wider text-gray-400 mb-2">Free</h3>
+          <div class="text-3xl font-extrabold text-gray-900 mb-6">Forever Free</div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-center gap-2"><span class="text-pink-500">✓</span> Online booking page</li>
+            <li class="flex items-center gap-2"><span class="text-pink-500">✓</span> Up to 50 bookings/month</li>
+            <li class="flex items-center gap-2"><span class="text-pink-500">✓</span> 1 Staff member</li>
+            <li class="flex items-center gap-2"><span class="text-pink-500">✓</span> RemboBook branding</li>
           </ul>
         </div>
-        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6  md:p-12 transition-transform hover:scale-[1.02] duration-200">
-            <p class="font-bold text-gray-900 mb-2">STANDARD- kes,1000/per month</p>
-            <ul class="list-disc">
-                <li class="list-disc">unlimited booking page</li>
-                <li class="list-disc">Sms reminders</li>
-                <li class="list-disc">Mpesa payments</li>
-                <li class="list-disc">Remove RemboBook branding</li>
-            </ul>
-            
-        </div>
-
-        <div class="bg-white rounded-xl shadow-md overflow-hidden max-w-md mx-auto mb-8 p-6 md:p-12 transition-transform hover:scale-[1.02] duration-200">
-            <p class="font-bold text-gray-900 mb-2">PREMIUM- kes,1500/per month</p>
-            <ul class="list-disc">
-                <li class="list-disc">Everthing in standard</li>
-                <li class="list-disc">Analytic data</li>
-                <li class="list-disc">AI booking assistant[Phase 2]</li>
-            </ul>
-            
-        </div>
-
       </div>
+
+      <!-- Standard Plan (Highlighted Choice) -->
+      <div class="bg-white rounded-2xl border-2 border-pink-500 p-8 flex flex-col justify-between shadow-xl relative transform md:-translate-y-2">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-pink-500 text-white font-semibold text-xs px-3 py-1 rounded-full uppercase tracking-wide">
+          Most Popular
+        </div>
+        <div>
+          <h3 class="font-bold text-xs uppercase tracking-wider text-pink-600 mb-2">Standard</h3>
+          <div class="text-3xl font-extrabold text-gray-900 mb-6">KES 1,000<span class="text-sm font-normal text-gray-500"> /mo</span></div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-center gap-2"><span class="text-pink-500 font-bold">✓</span> Unlimited booking page</li>
+            <li class="flex items-center gap-2"><span class="text-pink-500 font-bold">✓</span> SMS reminders</li>
+            <li class="flex items-center gap-2"><span class="text-pink-500 font-bold">✓</span> M-PESA payments</li>
+            <li class="flex items-center gap-2"><span class="text-pink-500 font-bold">✓</span> Remove RemboBook branding</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col justify-between shadow-sm">
+        <div>
+          <h3 class="font-bold text-xs uppercase tracking-wider text-gray-400 mb-2">Premium</h3>
+          <div class="text-3xl font-extrabold text-gray-900 mb-6">KES 1,500<span class="text-sm font-normal text-gray-500"> /mo</span></div>
+          <ul class="space-y-3 text-gray-600">
+            <li class="flex items-center gap-2"><span class="text-pink-500">✓</span> Everything in Standard</li>
+            <li class="flex items-center gap-2"><span class="text-pink-500">✓</span> Analytics dashboard</li>
+            <li class="flex items-center gap-2"><span class="text-pink-500">✓</span> AI booking assistant <span class="text-xs bg-gray-100 text-gray-600 px-2 py-0.5 rounded ml-1">Phase 2</span></li>
+          </ul>
+        </div>
+      </div>
+
     </div>
-    
-        
-    <div class="mobile-swiper hidden  ">
-      <%= render 'mobileSwiper' %>
-    </div>
+  </div>
+  
+  <!-- Mobile Swiper Section -->
+  <div class="mobile-swiper hidden">
+    <%= render 'mobileSwiper' %>
+  </div>
 
 </div>
