@@ -1,5 +1,8 @@
-require "dotenv/load" # ← This loads the .env file directly
-
+begin
+  require "dotenv/load"
+rescue LoadError
+  # Do nothing if the gem isn't present in production
+end
 require_relative "boot"
 
 require "rails/all"
