@@ -7,8 +7,8 @@ image: chepyego/rembo-book
 # Deploy to these servers.
 servers:
   web:
-  hosts:
-    - 204.168.208.249
+    hosts:
+      - 204.168.208.249
   workers:
     hosts:
       - 204.168.208.249
