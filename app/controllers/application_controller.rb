@@ -23,8 +23,7 @@ class ApplicationController < ActionController::Base
   def set_current_tenant
     return if request.subdomain.blank?
 
-    Rails.logger.debug "SUBDOMAIN DEBUG: '#{request.subdomain}'"
-
+     Rails.logger.info "SUBDOMAIN DEBUG: '#{request.subdomain}'"
 
     Current.tenant = Tenant.find_by(subdomain: request.subdomain)
 
@@ -39,11 +38,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-    def debug_host
-      Rails.logger.debug "RAW HOST: #{request.host} | SUBDOMAIN: #{request.subdomain} | ORIGINAL_URL: #{request.original_url}"
-    end
-
-
+  def debug_host
+    Rails.logger.info "RAW HOST: #{request.host} | SUBDOMAIN: #{request.subdomain} | ORIGINAL_URL: #{request.original_url}"
+  end
 
   def current_user
     Current.user
