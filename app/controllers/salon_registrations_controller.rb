@@ -6,11 +6,14 @@ allow_unauthenticated_access only: %i[new create_step_one new_step_two create]
   end
   def create_step_one
      session[:tenant_params] = params.require(:tenant).permit(:name, :subdomain, :email, :phone_number, :location, :operating_hours)
+       Rails.logger.info "STEP1 WROTE SESSION: #{session[:tenant_params].inspect} | session_id: #{request.session.id}"
 
      redirect_to new_step_two_salon_registration_path
   end
 
   def new_step_two
+      Rails.logger.info "STEP2 READING SESSION: #{session[:tenant_params].inspect} | session_id: #{request.session.id}"
+
     if session[:tenant_params].blank?
       redirect_to new_salon_registration_path, alert: "please complete step 1 first"
       return
