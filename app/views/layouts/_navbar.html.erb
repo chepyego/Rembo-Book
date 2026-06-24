@@ -7,7 +7,7 @@
     <!-- Left: Branding Logo Layout -->
     <div class="flex items-center">
       <%= link_to root_path, class: "flex-shrink-0 transition active:scale-95" do %>
-        <%= image_tag "LOGO3.png", class: "h-14 w-auto object-contain", alt: "Logo" %>
+      <%= render 'layouts/logo' %>
       <% end %>
     </div>
 
@@ -37,7 +37,7 @@
   <div data-controller="mobile-new" class="py-3 shadow-md md:hidden">
     <div class="flex justify-between mx-4 items-center">
       <%= link_to root_path do %>
-        <h1><%= image_tag "LOGO3.png", class: "h-16 w-16" %></h1>
+       <%= render 'layouts/logo' %>
       <% end %>
       <svg data-action="click->mobile-new#toggle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />

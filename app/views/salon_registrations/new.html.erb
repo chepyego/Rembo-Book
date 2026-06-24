@@ -1,85 +1,126 @@
-<div class="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+<div data-controller="form-registration" class="min-h-screen bg-gray-50 flex items-center justify-center px-4">
   <div class="w-full max-w-md bg-white rounded-xl shadow-lg p-6">
 
-    <%# Progress indicator %>
+     <%# Progress indicator  %>
     <div class="flex items-center mb-6">
       <div class="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center text-sm font-bold">1</div>
       <div class="flex-1 h-1 bg-gray-200 mx-2"></div>
-      <div class="w-8 h-8 rounded-full bg-gray-200 ...">2</div>
-
+      <div data-form-registration-target="progressLine" class="flex-1 h-1 bg-gray-200 mx-2 transition-colors duration-300"></div>
+      <div data-form-registration-target="stepTwoIndicator" class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center text-sm font-bold transition-colors duration-300">2</div>  
     </div>
 
-    <h1 class="text-2xl font-bold mb-1">Tell us about your salon</h1>
-    <p class="text-gray-500 text-sm mb-6">Step 1 of 2</p>
+     <%# Headings %>
+    <div data-form-registration-target="stepOneHeading">
+      <h1 class="text-2xl font-bold mb-1">Tell us about your salon</h1>
+      <p class="text-gray-500 text-sm mb-6">Step 1 of 2</p>
+    </div>
 
-    <%= form_with url: salon_registration_path, data: { turbo: false } do |form| %>
-    
-    <%= fields_for :tenant, @tenant do |t|%>
-      <div>
-            <div class="mb-2">
-                <%= t.label :name %>
-                <%= t.text_field :name, required: true, autofocus: true, autocomplete: "given-name", class:"block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-64 md:w-80" %>
-            </div>
+    <div data-form-registration-target="stepTwoHeading" class="hidden">
+      <h1 class="text-2xl font-bold mb-1">Create your account</h1>
+      <p class="text-gray-500 text-sm mb-6">Step 2 of 2</p>
+    </div>
 
-            <div class="">
-              <p class="text-sm text-gray-500 mt-1">
-                 Your booking link: 
-                  <span id="subdomain_preview" class="font-medium text-black">
-                        your-salon.rembohub.co.ke
-                  </span>
-              </p>
-              <%= t.label :subdomain %>
-              <%= t.text_field :subdomain, placeholder: "salon-name-link", required: true, autocomplete: "family-name", class:"block shadow rounded-md  border border-gray-400 outline-none px-3 py-2 mt-2 w-64 md:w-80" %>
-            </div>
+     <%# Error Display  %>
+    <% if @tenant.errors.any? || @user.errors.any? %>
+      <div class="bg-red-50 text-red-500 p-4 rounded-md mb-4 text-sm font-medium">
+        <ul class="list-disc pl-4 space-y-1">
+          <% @tenant.errors.full_messages.each do |msg| %> <li>Salon: <%= msg %></li> <% end %>
+          <% @user.errors.full_messages.each do |msg| %> <li>Account: <%= msg %></li> <% end %>
+        </ul>
+      </div>
+    <% end %>
 
+    <%= form_with url: salon_registrations_path, method: :post, data: { turbo: false } do |form| %>
+
+      <%# STEP 1 PANEL %>
+      <div data-form-registration-target="stepOnePanel" class="space-y-4">
+        <%= fields_for :tenant, @tenant do |t| %>
+          <div class="mb-2">
+            <%= t.label :name %>
+            <%= t.text_field :name, required: true, autofocus: true, autocomplete: "given-name", 
+                data: { action: "input->form-registration#updateSubdomain" },
+                class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
+          </div>
+
+          <div>
+            <p class="text-sm text-gray-500 mt-1">
+               Your booking link: 
+                <span data-form-registration-target="subdomainPreview" class="font-medium text-black">
+                      your-salon.rembobook.com
+                </span>
+            </p>
+            <%= t.label :subdomain %>
+            <%= t.text_field :subdomain, placeholder: "salon-name-link", required: true, autocomplete: "family-name", 
+                data: { "form-registration-target": "subdomainInput" },
+                class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
           </div>
             
-            <div class="mt-1">
-              <%= t.label :location %>
-              <%= t.text_field :location, required: true, autocomplete: "email", class:"block shadow rounded-md  border border-gray-400 outline-none px-3 py-2 mt-2 w-64 md:w-80" %>
-            </div>
+          <div class="mt-1">
+            <%= t.label :location %>
+            <%= t.text_field :location, required: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
+          </div>
 
-            <div class=" mt-2">
-              <%= t.label :phone_number %>
-              <%= t.text_field :phone_number, required: true, autocomplete: "new-password", class: "block shadow rounded-md  border border-gray-400 outline-none px-3 py-2 mt-2 w-64 md:w-80" %>
-            </div>
+          <div class="mt-2">
+            <%= t.label :phone_number %>
+            <%= t.text_field :phone_number, required: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
+          </div>
 
-            <div class="mt-2">
-              <%= t.label :email %>
-              <%= t.email_field :email, required: true, autocomplete: "new-password", class:"block shadow rounded-md  border border-gray-400 outline-none px-3 py-2 mt-2 w-64 md:w-80" %>
-            </div>
-             <div class="mt-2">
-              <%= t.label :operating_hours %>
-              <%= t.text_field :operating_hours, required: true, placeholder:"Mon-Sat: 8am-6pm, Sun: Closed", class:"block shadow rounded-md  border border-gray-400 outline-none px-3 py-2 mt-2 w-64 md:w-80" %>
-            </div>
+          <div class="mt-2">
+            <%= t.label :email %>
+            <%= t.email_field :email, required: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
+          </div>
 
-            
-    <% end %>
-    
-      <div class="mb-2 mt-4">
-      <%= form.submit "Next",class:"w-64 md:w-80 rounded-lg py-3 px-8 mt-2 bg-black text-white inline-block font-medium cursor-pointer hover:bg-black-200" %>
+          <div class="mt-2">
+            <%= t.label :operating_hours %>
+            <%= t.text_field :operating_hours, required: true, placeholder: "Mon-Sat: 8am-6pm, Sun: Closed", class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
+          </div>
+        <% end %>
+
+        <div class="mb-2 mt-4">
+          <button type="button" data-action="click->form-registration#nextStep" class="w-full max-w-sm rounded-lg py-3 px-8 mt-2 bg-black text-white text-center font-medium cursor-pointer hover:bg-gray-800 transition">
+            Next
+          </button>
+        </div>
       </div>
 
+       <%# STEP 2 PANEL %>
+      <div data-form-registration-target="stepTwoPanel" class="space-y-4 hidden">
+        <%= fields_for :user, @user do |u| %>
+          <div class="mb-2">
+              <%= u.label :first_name %>
+              <%= u.text_field :first_name, required: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
+          </div>
 
-  <% end %>
-  </div>
+          <div>
+              <%= u.label :last_name %>
+              <%= u.text_field :last_name, required: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
+          </div>
+                      
+          <div class="mt-1">
+              <%= u.label :email_address %>
+              <%= u.email_field :email_address, required: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
+          </div>
+
+          <div class="mt-2">
+              <%= u.label :password %>
+              <%= u.password_field :password, required: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
+          </div>
+
+          <div class="mt-2">
+              <%= u.label :password_confirmation %>
+              <%= u.password_field :password_confirmation, required: true, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full max-w-sm" %>
+          </div>
+        <% end %>
+
+        <div class="flex items-center justify-between pt-2 w-full max-w-sm">
+          <button type="button" data-action="click->form-registration#prevStep" class="py-3 text-sm font-medium text-gray-600 hover:text-black transition">
+            ← Back
+          </button>
+
+          <%= form.submit "Register Salon", class: "w-48 md:w-60 rounded-lg py-3 bg-black text-white font-medium cursor-pointer hover:bg-gray-800 transition" %>
+        </div>
+      </div>
+
+    <% end %>   
+  </div> 
 </div>
-
-<script>
-  document.getElementById("tenant_name").addEventListener('input', function(){
-    let subdomain = this.value
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-')
-    .trim()
-
-
-   document.getElementById('tenant_subdomain').value = subdomain
-   document.getElementById('subdomain_preview').textContent = subdomain + '.rembobook.co.ke'
-
-
-  })
-
-
-</script>

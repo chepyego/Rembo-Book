@@ -31,8 +31,9 @@ module Authentication
       Current.session ||= find_session_by_cookie
     end
 
+    # NEW / BEST PRACTICE (Memoized)
     def find_session_by_cookie
-      Session.find_by(id: cookies.signed[:session_id])
+      @current_session ||= Session.find_by(id: cookies.signed[:session_id])
     end
 
 

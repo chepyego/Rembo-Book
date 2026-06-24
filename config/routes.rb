@@ -4,12 +4,8 @@ root "home#index"
 get "home#about_us", to: "home#about_us", as: :about_us
 get "home#contact_us", to: "home#contact_us", as: :contact_us
 
-resource :salon_registration, only: [] do
-   get "new", to: "salon_registrations#new", as: :new
-   post "new", to: "salon_registrations#create_step_one"
-   get "account", to: "salon_registrations#new_step_two", as:  :new_step_two
-   post "account", to:  "salon_registrations#create"
-end
+get  "signup/salon",   to: "salon_registrations#new",    as: :new_salon_registration
+post "signup/salon",   to: "salon_registrations#create", as: :salon_registrations
 
   namespace :settings do
     get "/", to: "dashboard#show", as: :root

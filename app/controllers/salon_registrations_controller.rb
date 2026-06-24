@@ -1,48 +1,39 @@
 class SalonRegistrationsController < ApplicationController
-allow_unauthenticated_access only: %i[new create_step_one new_step_two create]
+  allow_unauthenticated_access only: %i[new create]
 
+  # GET /salon_registration
   def new
-    @tenant = Tenant.new(session[:tenant_params] || {})
-  end
-  def create_step_one
-     session[:tenant_params] = params.require(:tenant).permit(:name, :subdomain, :email, :phone_number, :location, :operating_hours).to_h
-       Rails.logger.info "STEP1 WROTE SESSION: #{session[:tenant_params].inspect} | session_id: #{request.session.id}"
-
-     redirect_to new_step_two_salon_registration_path
-  end
-
-  def new_step_two
-      Rails.logger.info "STEP2 READING SESSION: #{session[:tenant_params].inspect} | session_id: #{request.session.id}"
-
-    if session[:tenant_params].blank?
-      redirect_to new_salon_registration_path, alert: "please complete step 1 first"
-      return
-    end
-    @tenant = Tenant.new(session[:tenant_params])
+    @tenant = Tenant.new
     @user = User.new
   end
-  def create
-    ActiveRecord::Base.transaction do
-      @tenant = Tenant.create!(session[:tenant_params])
-      @user = @tenant.users.create!(user_params.merge(role: "salon_admin"))
-    end
-      session.delete(:tenant_params)
-      start_new_session_for(@user)
-      redirect_to dashboard_url(subdomain: @tenant.subdomain), allow_other_host: true
-  rescue ActiveRecord::RecordInvalid
-      @tenant = Tenant.new(session[:tenant_params])
-      @user = User.new(user_params)
-      render :new_step_two, status: :unprocessable_entity
-  end
 
+  # POST /salon_registration
+  def create
+    @tenant = Tenant.new(tenant_params)
+    @user = @tenant.users.new(user_params.merge(role: "salon_admin"))
+
+    # 3. The Atomic Transaction Block
+    ActiveRecord::Base.transaction do
+      @tenant.save!
+      @user.save!
+    end
+
+    # 4. Success Flow: Authenticate and send them to their isolated tenant domain
+    start_new_session_for(@user)
+    redirect_to dashboard_url(subdomain: @tenant.subdomain), allow_other_host: true
+
+  rescue ActiveRecord::RecordInvalid
+
+    render :new, status: :unprocessable_entity
+  end
 
   private
 
-   def tenant_params
-     params.expect(tenant: [ :name, :subdomain, :email, :location, :phone_number, :operating_hours ])
-   end
+  def tenant_params
+    params.expect(tenant: [ :name, :subdomain, :email, :location, :phone_number, :operating_hours ])
+  end
 
-   def user_params
-     params.expect(user: [ :first_name, :last_name, :email_address, :password, :password_confirmation ])
-   end
+  def user_params
+    params.expect(user: [ :first_name, :last_name, :email_address, :password, :password_confirmation ])
+  end
 end
