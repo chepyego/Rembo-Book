@@ -25,8 +25,7 @@ allow_unauthenticated_access only: %i[new create_step_one new_step_two create]
     end
       session.delete(:tenant_params)
       start_new_session_for(@user)
-      redirect_to root_url(subdomain: @tenant.subdomain), allow_other_host: true
-
+      redirect_to dashboard_url(subdomain: @tenant.subdomain), allow_other_host: true
   rescue ActiveRecord::RecordInvalid
       @tenant = Tenant.new(session[:tenant_params])
       @user = User.new(user_params)
