@@ -12,7 +12,7 @@
   <h1 class="font-bold md:text-3xl text-2xl text-gray-900 mb-2 mt-2 m-2  ">Welcome back</h1>
   <p class="mt-2 mb-4 m-2 text-gray-900 ">Today is a new day.its your day.You shape it .<br> Sign in to start managing your projects</p>
 
-  <%= form_with url: session_url, class: " m-2   " do |form| %>
+  <%= form_with url: session_url, data: { turbo: false }class: " m-2   " do |form| %>
     <div class="my-5 mt-2">
       <%= form.label :email %><br>
       <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address], class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-64 md:w-80" %>
