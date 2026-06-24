@@ -21,6 +21,9 @@ class ApplicationController < ActionController::Base
   def set_current_tenant
     return if request.subdomain.blank?
 
+    Rails.logger.debug "SUBDOMAIN DEBUG: '#{request.subdomain}'"
+
+
     Current.tenant = Tenant.find_by(subdomain: request.subdomain)
 
     unless Current.tenant
