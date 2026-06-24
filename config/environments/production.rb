@@ -79,8 +79,7 @@ Rails.application.configure do
 
   # Only use :id for inspections in production.
   config.active_record.attributes_for_inspect = [ :id ]
-  config.session_store :cookie_store, key: "_your_app_session", secure: Rails.env.production?, domain: :all, tld_length: 1
-
+  config.session_store :cookie_store, key: "_your_app_session", secure: Rails.env.production?, domain: ".rembobook.com"
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
