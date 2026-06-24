@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   before_action :resume_session
   before_action :set_current_tenant
   helper_method :current_user
+  before_action :debug_host
+
 
   # Keep this if it contains non-auth related helpers/logic
   allow_browser versions: :modern
@@ -37,6 +39,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
+    def debug_host
+      Rails.logger.debug "RAW HOST: #{request.host} | SUBDOMAIN: #{request.subdomain} | ORIGINAL_URL: #{request.original_url}"
+    end
 
 
 
