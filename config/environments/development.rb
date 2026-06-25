@@ -14,7 +14,7 @@ Rails.application.configure do
   # tailwindcss loading
   config.assets.debug = true
 
-
+   config.session_store :cookie_store, key: "_your_app_session", domain: ".lvh.me"
 
   # Do not eager load code on boot.
   config.eager_load = false

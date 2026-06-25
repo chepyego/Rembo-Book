@@ -1,9 +1,10 @@
-<%= form_with(model: service, class: "contents") do |form| %>
+<%= form_with(model: service, class: "w-full max-w-xl mx-auto px-4 sm:px-0") do |form| %>
+  
+  <%# --- Error Alerts Container --- %>
   <% if service.errors.any? %>
-    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
-
-      <ul>
+    <div id="error_explanation" class="bg-red-50 text-red-600 p-4 font-medium rounded-xl mb-6 text-sm border border-red-100 shadow-sm">
+      <h2 class="font-bold text-base mb-2"><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
+      <ul class="list-disc pl-5 space-y-1">
         <% service.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,25 +12,54 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
+  <%# --- Form Group Wrapper --- %>
+  <div class="space-y-5">
+    
+    <div>
+      <%= form.label :title, class: "block text-sm font-semibold text-gray-700" %>
+      <%= form.text_field :title, 
+          placeholder: "e.g., Acrylic Full Set, Gel Manicure",
+          class: "block rounded-xl border border-gray-300 outline-none px-4 py-3 mt-1.5 w-full text-base focus:border-black focus:ring-1 focus:ring-black shadow-sm transition-all" %>
+    </div>
+
+    <div>
+      <%= form.label :price, class: "block text-sm font-semibold text-gray-700" %>
+      <div class="relative mt-1.5 rounded-xl shadow-sm">
+        <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4">
+          <span class="text-gray-500 sm:text-sm">KSh</span>
+        </div>
+        <%= form.number_field :price, 
+            placeholder: "0.00",
+            inputmode: "decimal",
+            pattern: "[0-9]*",
+            class: "block rounded-xl border border-gray-300 outline-none pl-14 pr-4 py-3 w-full text-base focus:border-black focus:ring-1 focus:ring-black transition-all" %>
+      </div>
+    </div>
+
+    <div>
+      <%= form.label :description, class: "block text-sm font-semibold text-gray-700 mb-1.5" %>
+      <div class="prose max-w-none rounded-xl border border-gray-300 p-1 shadow-sm focus-within:border-black focus-within:ring-1 focus-within:ring-black transition-all bg-white overflow-hidden">
+        <%= form.rich_text_area :description, class: "min-h-[120px] outline-none px-3 py-2 border-0 shadow-none focus:ring-0" %>
+      </div>
+    </div>
+
+    <div>
+      <%= form.label :image, "Service Showcase Image", class: "block text-sm font-semibold text-gray-700 mb-1.5" %>
+      <label class="flex flex-col items-center justify-center w-full min-h-[110px] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer bg-gray-50 hover:bg-gray-100 transition relative p-4 text-center">
+        <div class="flex flex-col items-center justify-center pt-2 pb-3">
+          <span class="text-2xl mb-1">📸</span>
+          <p class="text-sm text-gray-600 font-medium">Tap to upload cover image</p>
+          <p class="text-xs text-gray-400 mt-0.5">PNG, JPG up to 5MB</p>
+        </div>
+        <%= form.file_field :image, accept: "image/*", class: "hidden" %>
+      </label>
+    </div>
+
   </div>
 
-  <div class="my-5">
-    <%= form.label :price %>
-    <%= form.text_field :price, class: "block shadow rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full" %>
-  </div>
-  <div class="my-5">
-     <%= form.label :description, style: "display: block" %>
-    <%= form.rich_text_area :description %>
-  </div>
-  <div>
-    <%= form.label :image, style: "display: block" %>
-    <%= form.file_field :image, accept: "image/*" %>
+  <div class="mt-8 pt-4 border-t border-gray-100 flex flex-col-reverse sm:flex-row sm:justify-end gap-3">
+    <%= link_to "Cancel", services_path, class: "w-full sm:w-auto rounded-xl py-3 px-6 text-center text-sm font-semibold text-gray-700 hover:bg-gray-100 transition active:scale-[0.98]" %>
+    <%= form.submit class: "w-full sm:w-auto rounded-xl py-3.5 px-8 bg-black text-white font-semibold text-sm cursor-pointer hover:bg-gray-800 shadow-md active:scale-[0.98] transition-all" %>
   </div>
 
-  <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
-  </div>
 <% end %>
