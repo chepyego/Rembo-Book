@@ -35,10 +35,10 @@
 
     </div>
       <div class="mt-4 my-5 flex  items-center">
-         <hr class="flex-grow border-gray-500">
+         <hr class="grow border-gray-500">
           <span class="m-2"><p>or</p></span>
          
-          <hr class="flex-grow border-gray-500">
+          <hr class="grow border-gray-500">
       </div>    <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
       <div data-controller="coming-soon" class="inline">
          <button data-coming-soon-target="google" class="md:w-80 w-64 rounded-lg py-3 px-8  bg-red-500 text-white inline-block font-medium cursor-pointer">Sign in with Google</button><br>
@@ -49,7 +49,7 @@
          <button  data-coming-soon-target="facebook"class="md:w-80 w-64 rounded-lg py-3 px-8 mt-2 bg-blue-300 text-white inline-block font-medium cursor-pointer">Sign in with Facebook</button>
       </div>
     </div>
-    <p class="mt-2"> Dont you have an account? <span class="text-blue-400"><%= link_to 'Sign up', sign_up_path %></span><p> 
+    <p class="mt-2"> Dont you have an account? <span class="text-blue-400"><%= link_to "Register your salon", new_salon_registration_path %></span><p> 
   <% end %>
 
 
