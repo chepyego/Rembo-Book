@@ -14,11 +14,14 @@ class BookingsController < ApplicationController
 
   def index
     # Only show bookings for the logged-in user
-    if current_user.admin?
-      @bookings = Current.tenant.bookings
-    else
-      @bookings = Current.tenant.bookings.for_user(current_user)
-    end
+    # if current_user.admin?
+    #   @bookings = Current.tenant.bookings
+    # else
+    #   @bookings = Current.tenant.bookings.for_user(current_user)
+    # end
+    @bookings = Current.tenant.bookings
+    @upcoming = Current.tenant.bookings.upcoming
+
   end
 
   def success
