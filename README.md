@@ -1,9 +1,33 @@
 # README
 
-live demo - https://nail-palour2-wispy-dew-7934.fly.dev/
-link to the website - https://nail-palour.onrender.com/
+live demo - rembobook.com
 
-This is a nail palour booking web app that allows one to book either manicure or pedicure services.
+# Remboook
+
+Remboook is a multi-tenant SaaS application built with Ruby on Rails 8 that enables salon owners to manage their services and appointments through their own dedicated workspace. Each salon receives a unique subdomain where clients can browse services and book appointments online.
+
+## Features
+
+- Multi-tenant architecture with tenant-specific subdomains
+- Salon owner authentication
+- Service management
+- Online appointment booking
+- Booking management dashboard
+- Responsive UI built with Hotwire and Tailwind CSS
+
+## Tech Stack
+
+- Ruby on Rails 8
+- PostgreSQL
+- Hotwire (Turbo & Stimulus)
+- Tailwind CSS
+- Docker
+- Kamal
+- Hetzner Cloud
+
+## Deployment
+
+The application is containerized with Docker and deployed to a Hetzner Cloud server using Kamal, demonstrating modern Rails deployment practices.
 
 Requirements
 
@@ -13,7 +37,7 @@ Rails 8
 
 SQLite or MySQL
 
-How to get started:
+## How to get started:
 
 - clone the repo
 
