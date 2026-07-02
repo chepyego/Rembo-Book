@@ -10,6 +10,8 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    # Safer: Ensures the service actually belongs to Bella's salon
+    @service = Current.tenant.services.find(params[:service_id])
   end
 
   def index
@@ -21,7 +23,6 @@ class BookingsController < ApplicationController
     # end
     @bookings = Current.tenant.bookings
     @upcoming = Current.tenant.bookings.upcoming
-
   end
 
   def success
