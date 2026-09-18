@@ -4,7 +4,7 @@ class Avo::Resources::Client < Avo::BaseResource
   # self.search = {
   #   query: -> { query.ransack(id_eq: params[:q], m: "or").result(distinct: false) }
   # }
-  
+
   def fields
     field :id, as: :id
     field :first_name, as: :text
